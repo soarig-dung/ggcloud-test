@@ -1,16 +1,16 @@
 import os
-import mysql.connector
+
 from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
-def main():
-    someVarFromEnv = os.environ.get('someVar')
-    return 'I have changed the text here for testing: {}!\n second line'.format(someVarFromEnv)
+
+@app.route("/")
+def hello_world():
+    """Example Hello World route."""
+    name = os.environ.get("NAME", "World")
+    return f"Hello {name}!"
+
 
 if __name__ == "__main__":
-    app.debug = True
-    app.host='0.0.0.0'
-    app.port=int(os.environ.get('PORT', 808'0))
-    app.run()
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
