@@ -4,19 +4,19 @@ steps:
     args: [
             'build',
             '-t',
-            'us-central1-docker.pkg.dev/study-nguyen-tien-dung/test-cloud-build:${SHORT_SHA}',
+            'us-central1-docker.pkg.dev/study-nguyen-tien-dung/ggcloud-test:${SHORT_SHA}',
             '-t',
-            'us-central1-docker.pkg.dev/study-nguyen-tien-dung/test-cloud-build:latest',
+            'us-central1-docker.pkg.dev/study-nguyen-tien-dung/ggcloud-test:latest',
             '--cache-from',
-            'us-central1-docker.pkg.dev/study-nguyen-tien-dung/test-cloud-build:latest',
+            'us-central1-docker.pkg.dev/study-nguyen-tien-dung/ggcloud-test:latest',
             '.'
           ]
 
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'us-central1-docker.pkg.dev/study-nguyen-tien-dung/test-cloud-build:${SHORT_SHA}']
+    args: ['push',  'us-central1-docker.pkg.dev/study-nguyen-tien-dung/ggcloud-test:${SHORT_SHA}']
 
 # Store images in Google Artifact Registry 
 images:
-  - us-central1-docker.pkg.dev/study-nguyen-tien-dung/test-cloud-build:${SHORT_SHA}
-  - us-central1-docker.pkg.dev/study-nguyen-tien-dung/test-cloud-build:latest
+  - us-central1-docker.pkg.dev/study-nguyen-tien-dung/ggcloud-test:${SHORT_SHA}
+  - us-central1-docker.pkg.dev/study-nguyen-tien-dung/ggcloud-test:latest
